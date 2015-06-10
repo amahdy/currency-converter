@@ -1,13 +1,13 @@
 # Currency Converter
 Simple Web Component for Currency Conversion.
 
-# Usaage
+## Usaage
 
-* id: optional element id
-* value: must be a number
-* to: the currecny to convert to it 
+* `id` optional element id
+* `value` must be a number
+* `to` the currecny to convert to it 
 
-# Example
+## Example
 ```html
   <currency-converter id="cc" value="7" to="EUR"></currency-converter>
 ```
