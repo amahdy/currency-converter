@@ -1,7 +1,7 @@
 # Currency Converter
 Simple Web Component for Currency Conversion.
 
-## Usaage
+## Arguments
 
 * `id` optional element id
 * `value` must be a number
