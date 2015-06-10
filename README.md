@@ -13,3 +13,8 @@ Simple Web Component for Currency Conversion.
 ```
 
 The result will be the equivelant of 7 USD in EUR
+
+## Demo
+Available here: http://amahdy.app.fi/demo.html
+
+Please note that this demo URL **will** change in the future.
