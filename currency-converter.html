@@ -1,0 +1,80 @@
+<!--
+
+openexchangerates.org
+
+7193c53779a944c193e23c125e7754fe
+
+-->
+
+<link rel="import"
+      href="bower_components/polymer/polymer.html">
+
+<dom-module id="currency-converter">
+	<template>
+  		<!-- span>{{value}}</span>
+  		USD is equivalent to:
+  		<span>{{valTo}}</span>
+  		<span>{{to}}</span -->
+  		<span>{{valTo}}</span>
+  		<i><span>{{loading}}</span></i>
+	</template>
+</dom-module>
+
+<script>
+	var getJSON = function(url) {
+		return new Promise(function(resolve, reject) {
+			var xhr = new XMLHttpRequest();
+			xhr.open('get', url, true);
+			xhr.responseType = 'json';
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status == 200) {
+					resolve(xhr.response);
+				} else {
+					reject(status);
+				}
+			};
+			xhr.send();
+		});
+	};
+
+	function oConvert(to) {
+		return getJSON(
+			'https://openexchangerates.org/api/latest.json' +
+			'?app_id=7193c53779a944c193e23c125e7754fe'
+		).then(function(data) {
+    		return eval('data.rates.' + to);
+		}, function(status) {
+			return -1;
+		});
+	}
+
+	Polymer({
+		is: "currency-converter",
+
+ 		properties: {
+  			value: String,
+ 			to: String,
+ 			valTo: String,
+ 			changed: {
+ 				type: String,
+ 				computed: 'convert(value, to)'
+ 			},
+ 			loading: String
+ 		},
+
+		convert: function(value, to) {
+			this.loading = "(loading..)"
+			var elem = this;
+			oConvert(to).then(function(data) {
+				if(data==-1) {
+					elem.valTo = "[ Error :-/ ]";
+					elem.loading = "";
+				}else {
+					elem.valTo = elem.value*data + ' ' + elem.to;
+					elem.loading = "";
+				}
+			});
+		}
+	});
+</script>
