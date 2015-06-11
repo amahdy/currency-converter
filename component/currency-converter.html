@@ -38,12 +38,12 @@ openexchangerates.org
 		});
 	};
 
-	function oConvert(to) {
+	function oConvert(currency) {
 		return getJSON(
 			'https://openexchangerates.org/api/latest.json' +
 			'?app_id=7193c53779a944c193e23c125e7754fe'
 		).then(function(data) {
-    		return eval('data.rates.' + to);
+    		return eval('data.rates.' + currency);
 		}, function(status) {
 			return -1;
 		});
@@ -54,26 +54,31 @@ openexchangerates.org
 
  		properties: {
   			value: String,
+ 			from: String,
  			to: String,
  			valTo: String,
  			changed: {
  				type: String,
- 				computed: 'convert(value, to)'
+ 				computed: 'convert(value, from, to)'
  			},
  			loading: String
  		},
 
-		convert: function(value, to) {
+		convert: function(value, from, to) {
 			this.loading = "(loading..)"
 			var elem = this;
-			oConvert(to).then(function(data) {
-				if(data==-1) {
-					elem.valTo = "[ Error :-/ ]";
+			var intermediateVal;
+			oConvert(from).then(function(dataFrom) {
+				intermediateVal = dataFrom;		
+				oConvert(to).then(function(dataTo) {
+					if(intermediateVal==-1 || dataTo==-1) {
+						elem.valTo = "[ Error :-/ ]";
+					}else {
+						elem.valTo = ((elem.value*dataTo)/intermediateVal).toFixed(3) +
+										' ' + elem.to;
+					}
 					elem.loading = "";
-				}else {
-					elem.valTo = elem.value*data + ' ' + elem.to;
-					elem.loading = "";
-				}
+				});
 			});
 		}
 	});

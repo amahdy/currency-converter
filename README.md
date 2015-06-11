@@ -5,7 +5,8 @@ Simple Web Component for Currency Conversion.
 
 * `id` optional element id
 * `value` must be a number
-* `to` the currecny to convert to it 
+* `to` the currecny to convert from
+* `to` the currecny to convert to
 
 ## Example
 ```html
