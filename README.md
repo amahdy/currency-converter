@@ -10,7 +10,7 @@ Simple Web Component for Currency Conversion.
 
 ## Example
 ```html
-  <currency-converter id="cc" value="7" to="EUR"></currency-converter>
+  <currency-converter id="cc" value="7" from="USD" to="EUR"></currency-converter>
 ```
 
 The result will be the equivelant of 7 USD in EUR
