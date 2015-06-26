@@ -1,0 +1,25 @@
+{
+  "name": "amahdy",
+  "version": "0.0.1",
+  "authors": [
+    "AMahdy AbdElAziz <c>"
+  ],
+  "description": "Simple Web Component for Currency Conversion.",
+  "main": "currency-converter.html",
+  "keywords": [
+    "Currency", "Conversion", "Converter", "Demo"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "amahdy.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "platform": "Polymer/platform#~0.4.2",
+    "polymer": "Polymer/polymer#~1.0.2"
+  }
+}
