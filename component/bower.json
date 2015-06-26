@@ -5,7 +5,7 @@
     "AMahdy AbdElAziz <c>"
   ],
   "description": "Simple Web Component for Currency Conversion.",
-  "main": "main",
+  "main": "currency-converter.html",
   "keywords": [
     "Currency, Conversion, Converter, Demo"
   ],
