@@ -7,7 +7,7 @@
   "description": "Simple Web Component for Currency Conversion.",
   "main": "currency-converter.html",
   "keywords": [
-    "Currency, Conversion, Converter, Demo"
+    "Currency", "Conversion", "Converter", "Demo"
   ],
   "license": "GPL-3.0",
   "homepage": "amahdy.net",
